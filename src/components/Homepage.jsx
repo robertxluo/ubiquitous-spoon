@@ -137,6 +137,10 @@ const Homepage = () => {
     setModal(false);
   };
 
+  const handleAddFavorite = () => {
+    console.log('favorite clicked');
+  };
+
   return (
     <div className="site-layout-content search-background">
       <Card style={{ width: '66%', opacity: 0.9 }}>
@@ -229,7 +233,7 @@ const Homepage = () => {
                 style={{ width: 300, margin: '10px 10px 10px 10px' }}
                 cover={<img alt="example" src={`${el.image}`} />}
                 actions={[
-                  <HeartTwoTone key="favorite" />,
+                  <HeartTwoTone key="favorite" onClick={() => handleAddFavorite(el.id, el.title)} />,
                   <FullscreenOutlined
                     onClick={() => {
                       handleOpenModal(el.id, el.title);
@@ -248,6 +252,7 @@ const Homepage = () => {
             onOk={() => handleViewWebsite(sourceUrl)}
             confirmLoading={modalLoading}
             onCancel={() => handleCloseModal()}
+            okText="View Website"
           >
             <p dangerouslySetInnerHTML={{ __html: summary }}></p>
 
